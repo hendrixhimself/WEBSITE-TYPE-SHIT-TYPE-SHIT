@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            perspective: 1000px;
+        }
+        .audio-container {
+            margin-top: 20px;
+        }
+        #audioPlayer {
+            margin-top: 10px;
+            width: 100%;
+        }
+        h1 {
+            display: inline-block;
+            animation: spin 4s linear infinite;
+            transform-style: preserve-3d;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>you are lame and im cool because im hendrix</h1>
+    
+    <div class="audio-container">
+        <input type="file" id="audioInput" accept="audio/mp3" onchange="handleAudioUpload(event)">
+        <audio id="audioPlayer" controls>
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        function handleAudioUpload(event) {
+            const file = event.target.files[0];
+            const audioPlayer = document.getElementById('audioPlayer');
+            const audioUrl = URL.createObjectURL(file);
+            audioPlayer.src = audioUrl;
+        }
+    </script>
+</body>
+</html>
